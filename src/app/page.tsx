@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { User } from "@/db";
+import { unstable_noStore } from "next/cache";
 import Link from "next/link";
 
 export default async function Home() {
+  unstable_noStore();
   const users = await fetch("http://localhost:3000/api/users").then(
     (res) => res.json() as Promise<User[]>
   );

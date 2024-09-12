@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { Form } from "./Form";
+import { unstable_noStore } from "next/cache";
 
 export default async function User({
   params,
@@ -9,6 +10,7 @@ export default async function User({
     id: string;
   };
 }) {
+  unstable_noStore();
   const user = await fetch("http://localhost:3000/api/users/" + params.id).then(
     (res) => res.json()
   );
