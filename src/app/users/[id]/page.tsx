@@ -11,9 +11,9 @@ export default async function User({
   };
 }) {
   unstable_noStore();
-  const user = await fetch("http://localhost:3000/api/users/" + params.id).then(
-    (res) => res.json()
-  );
+  const user = await fetch("http://localhost:3000/api/users/" + params.id, {
+    cache: "no-store",
+  }).then((res) => res.json());
 
   if (!user) {
     return 404;
